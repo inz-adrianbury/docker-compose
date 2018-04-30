@@ -19,14 +19,14 @@ services:
       - traefik.port=80
 
   front_end:
-    image: adrianbury/inz-front-end:latest
+    image: inzadrianbury/front-end:latest
     restart: always
     container_name: inz_front_end
     networks:
       - internal
 
   back_end:
-    image: adrianbury/inz-core:latest
+    image: inzadrianbury/back-end:latest
     restart: always
     container_name: inz_back_end
     environment:
