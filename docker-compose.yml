@@ -1,0 +1,50 @@
+version: '3.3'
+
+services:
+  web:
+    image: nginx
+    container_name: inz_web
+    volumes:
+      - ./volumes/web/nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+    networks:
+      - web
+      - internal
+
+  front_end:
+    image: adrianbury/inz-front-end:latest
+    restart: always
+    container_name: inz_front_end
+    networks:
+      - internal
+
+  back_end:
+    image: adrianbury/inz-core:latest
+    restart: always
+    container_name: inz_back_end
+    environment:
+      - AUTH_USER=admin
+      - AUTH_PASSWORD=supertajne
+      - DB_HOST=database
+      - DB_NAME=paraca_inzynierska
+    depends_on:
+      - database
+    networks:
+      - internal
+
+  database:
+    image: mongo:3.7.1
+    restart: always
+    container_name: inz_database
+    networks:
+      - internal
+    volumes:
+      - ./volumes/database/config:/data/configdb
+      - ./volumes/database/db:/data/db
+
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
