@@ -10,6 +10,10 @@ services:
     networks:
       - web
       - internal
+    labels:
+      - traefik.frontend.rule=Host:inz.adrianbury.pl
+      - traefik.docker.network=web
+      - traefik.port=80
 
   front_end:
     image: adrianbury/inz-front-end:latest
