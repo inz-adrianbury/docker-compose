@@ -1,9 +1,9 @@
 version: '3.3'
 
 services:
-  web:
+  proxy:
     image: nginx
-    container_name: inz_web
+    container_name: inz_proxy
     volumes:
       - ./volumes/web/nginx.conf:/etc/nginx/conf.d/default.conf
     restart: always
