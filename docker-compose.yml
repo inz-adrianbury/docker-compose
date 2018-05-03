@@ -4,26 +4,19 @@ services:
   proxy:
     image: nginx
     container_name: inz_proxy
+    ports:
+      - 80:80
     volumes:
       - ./volumes/web/nginx.conf:/etc/nginx/conf.d/default.conf
     restart: always
     depends_on:
       - front_end
       - back_end
-    networks:
-      - web
-      - internal
-    labels:
-      - traefik.frontend.rule=Host:inz.adrianbury.pl
-      - traefik.docker.network=web
-      - traefik.port=80
 
   front_end:
     image: inzadrianbury/front-end:latest
     restart: always
     container_name: inz_front_end
-    networks:
-      - internal
 
   back_end:
     image: inzadrianbury/back-end:latest
@@ -36,22 +29,11 @@ services:
       - DB_NAME=${DB_NAME}
     depends_on:
       - database
-    networks:
-      - internal
 
   database:
     image: mongo:3.7.1
     restart: always
     container_name: inz_database
-    networks:
-      - internal
     volumes:
       - ./volumes/database/config:/data/configdb
       - ./volumes/database/db:/data/db
-
-
-networks:
-  web:
-    external: true
-  internal:
-    external: false
