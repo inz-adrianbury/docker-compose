@@ -30,10 +30,10 @@ services:
     restart: always
     container_name: inz_back_end
     environment:
-      - AUTH_USER=admin
-      - AUTH_PASSWORD=supertajne
-      - DB_HOST=database
-      - DB_NAME=paraca_inzynierska
+      - AUTH_USER=${AUTH_USER}
+      - AUTH_PASSWORD=${AUTH_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
     depends_on:
       - database
     networks:
