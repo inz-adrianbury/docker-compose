@@ -1,2 +1,2 @@
 volumes/database
-.dist.env
+.env
