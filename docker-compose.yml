@@ -25,7 +25,7 @@ services:
     environment:
       - AUTH_USER=${AUTH_USER}
       - AUTH_PASSWORD=${AUTH_PASSWORD}
-      - DB_HOST=${DB_HOST}
+      - DB_HOST=database
       - DB_NAME=${DB_NAME}
     depends_on:
       - database
