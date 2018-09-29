@@ -1,5 +1,5 @@
 # Docker compose
-Oficjalny docker-compose dla napisanych aplikacji
+Oficjalny docker-compose do napisanych aplikacji na potrzeby pracy inżynierskiej
 
 ## Wymagania
 * [Docker CE v17](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
